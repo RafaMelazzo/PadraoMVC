@@ -12,19 +12,6 @@ namespace PadraoMVC.Controllers
         // ViewResult - Representa HTML
         public ActionResult Index()
         {
-            //ViewBag.Id = 8;
-            //ViewBag.Avatar = "🧙";
-            //ViewBag.PlayerName = "Gandalf Mithrandir";
-            //ViewBag.Points = 1298;
-
-            //List<Score> modelo = new List<Score>
-            //{
-            //    new Score(8, "🧙", "Gandalf Mithrandir", 1298),
-            //    new Score(1, "🧝", "Legolas Greenleaf", 800),
-            //    new Score(7, "👦", "Frodo Baggins", 765),
-            //    new Score(3, "🧝‍♀️", "Galadriel Alatáriel", 721)
-            //};
-
             var modelo = RankingService.Instance().GetAll();
             return View(modelo);
         }
@@ -37,10 +24,18 @@ namespace PadraoMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult NovoScore(Score input)
+        public ActionResult NovoScore(NewScoreViewModel input)
         {
-            RankingService.Instance().Create(input);
-            return Redirect("/Ranking");
+            if (ModelState.IsValid)
+            {
+                RankingService.Instance().Create(input.NewScore);
+                return Redirect("/Ranking");
+            }
+            else
+            {
+                var modelo = new NewScoreViewModel();
+                return View(modelo);
+            }
         }
 
         // EmptyResult - não representa nenhum resultado

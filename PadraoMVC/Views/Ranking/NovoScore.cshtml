@@ -21,9 +21,8 @@
                     <tbody>
                         <tr>
                             <td scope="row">
-                                <input type="hidden" name="Id" value="@(Model.NewScore.Id)" />   
-                                <select name="Avatar" class="form-control text-center">
-                                    <option value="">Selecione</option>
+                                <input type="hidden" name="Id" value="@(Model.NewScore.Id)" />
+                                <select name="NewScore.Avatar" class="form-control text-center">
                                     @foreach (var avatar in Model.Avatars)
                                     {
                                         if (avatar == Model.NewScore.Avatar)
@@ -36,20 +35,35 @@
                                         }
                                     }
                                 </select>
+                                <span class="help-block alert-warning">
+                                </span>
                             </td>
                             <td>
-                                <input type="text" name="PlayerName" value="@(Model.NewScore.PlayerName)" class="form-control" placeholder="Nome do Jogador" />
+                                @*<input type="text" name="PlayerName" value="@(Model.NewScore.PlayerName)" class="form-control" placeholder="Nome do Jogador" />*@
+                                @Html.TextBoxFor(m => m.NewScore.PlayerName, new { name="PlayerName", placeholder="Nome do Jogador", @class = "form-control" })
+                                <span class="help-block alert-warning">
+                                    @Html.ValidationMessageFor(m => m.NewScore.PlayerName)
+                                </span>
                             </td>
-                            <td><input type="number" name="Points" value="@(Model.NewScore.Points)" class="form-control" placeholder="0" /></td>
+                            <td>
+                                @*<input type="number" name="Points" value="@(Model.NewScore.Points)" class="form-control" placeholder="0" />*@
+                                @Html.TextBoxFor(m => m.NewScore.Points, new { type = "number", name = "Points", placeholder = "0", @class = "form-control" })
+                                <span class="help-block alert-warning">
+                                    @Html.ValidationMessageFor(m => m.NewScore.Points)
+                                </span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-right">
-                <button type="reset" class="btn btn-default" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar</button>
-                <button type="submit" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Confirmar</button>
+            <div class="col-md-2 col-md-offset-2 text-left">
+                <a href="~/Ranking" class="btn btn-warning" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar</a>
+            </div>
+            <div class="col-md-6 text-right">
+                <button type="reset" class="btn btn-default" role="button"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Apagar</button>
+                <button type="submit" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Confirmar</button>
             </div>
         </div>
     </form>

@@ -141,6 +141,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\logo-frodo-corretor-imobiliario%402x.png" />
+    <Content Include="images\logo-frodo-corretor-imobiliario-white%402x.png" />
+    <Content Include="images\logo-frodo-corretor-imobiliario-white.png" />
+    <Content Include="images\logo-frodo-corretor-imobiliario.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -170,6 +173,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Ranking\Index.cshtml" />
     <Content Include="Views\Ranking\NovoScore.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
