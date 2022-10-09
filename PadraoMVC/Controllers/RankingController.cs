@@ -17,16 +17,15 @@ namespace PadraoMVC.Controllers
             //ViewBag.PlayerName = "Gandalf Mithrandir";
             //ViewBag.Points = 1298;
 
-            List<Score> modelo = new List<Score>
-            {
-                new Score(8, "🧙", "Gandalf Mithrandir", 1298),
-                new Score(1, "🧝", "Legolas Greenleaf", 800),
-                new Score(7, "👦", "Frodo Baggins", 765),
-                new Score(3, "🧝‍♀️", "Galadriel Alatáriel", 721)
-            };
+            //List<Score> modelo = new List<Score>
+            //{
+            //    new Score(8, "🧙", "Gandalf Mithrandir", 1298),
+            //    new Score(1, "🧝", "Legolas Greenleaf", 800),
+            //    new Score(7, "👦", "Frodo Baggins", 765),
+            //    new Score(3, "🧝‍♀️", "Galadriel Alatáriel", 721)
+            //};
 
-            // CRIAÇÃO DA CLASSE RankingService NÃO FOI MOSTRADA EM NUNHUM DOS VÍDEOS!!!
-            //var modelo = RankingService.Instance().GetAll();
+            var modelo = RankingService.Instance().GetAll();
             return View(modelo);
         }
 
@@ -40,8 +39,7 @@ namespace PadraoMVC.Controllers
         [HttpPost]
         public ActionResult NovoScore(Score input)
         {
-            // CRIAÇÃO DA CLASSE RankingService NÃO FOI MOSTRADA EM NUNHUM DOS VÍDEOS!!!
-            //RankingService.Instance().Create(input);
+            RankingService.Instance().Create(input);
             return Redirect("/Ranking");
         }
 
