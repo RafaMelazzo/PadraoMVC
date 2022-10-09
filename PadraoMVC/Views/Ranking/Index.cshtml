@@ -1,0 +1,37 @@
+﻿@model List<PadraoMVC.Models.Score>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Ranking de Jogadores";
+}
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table table-bordered table-striped table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Jogador</th>
+                        <th scope="col">Pontos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var score in Model)
+                    {
+                        <tr>
+                            <td scope="row">@score.Id</td>
+                            <td>@score.Avatar @score.PlayerName</td>
+                            <td>@score.Points</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-right">
+            <a href="/Ranking/NovoScore" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo Score</a>
+        </div>
+    </div>
+</div>

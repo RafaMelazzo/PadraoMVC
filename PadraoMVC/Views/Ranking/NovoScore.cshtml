@@ -1,0 +1,56 @@
+﻿@model PadraoMVC.Models.NewScoreViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Novo Score";
+}
+
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+    <form method="post">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table table-bordered table-striped table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Avatar</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Pontos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">
+                                <input type="hidden" name="Id" value="@(Model.NewScore.Id)" />   
+                                <select name="Avatar" class="form-control text-center">
+                                    <option value="">Selecione</option>
+                                    @foreach (var avatar in Model.Avatars)
+                                    {
+                                        if (avatar == Model.NewScore.Avatar)
+                                        {
+                                            <option value="@avatar" selected>@avatar</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@avatar">@avatar</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" name="PlayerName" value="@(Model.NewScore.PlayerName)" class="form-control" placeholder="Nome do Jogador" />
+                            </td>
+                            <td><input type="number" name="Points" value="@(Model.NewScore.Points)" class="form-control" placeholder="0" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-right">
+                <button type="reset" class="btn btn-default" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar</button>
+                <button type="submit" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Confirmar</button>
+            </div>
+        </div>
+    </form>
+</div>
